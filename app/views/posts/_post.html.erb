@@ -1,0 +1,33 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+  <p>
+    <strong>Writted by:</strong>
+    <%= post.user.email %>
+  </p>
+  <p>
+    Posted <%= time_tag post.created_at, "data-local": "time-ago" %> 
+  </p>
+  <p>
+  <%= pluralize post.comments.count, "comment" %> 
+    
+  </p>
+  <p>
+    <strong>Content:</strong>
+    <%= post.content %>
+  </p>
+
+  <p>
+    Tags
+    <% @post.categories.each do |category|%>
+    <h3>
+      <%= link_to category.title, category %>
+    </h3>
+    <% end %>
+  </p>
+  
+
+
+</div>
