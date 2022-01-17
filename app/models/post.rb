@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+    extend FriendlyId
     validates_presence_of :title
     has_rich_text :content
     has_many :comments, dependent: :destroy
@@ -6,7 +7,7 @@ class Post < ApplicationRecord
     has_many :has_categories  
     has_many :categories, through: :has_categories
     attr_accessor :category_elements
-
+    friendly_id :title, use: :slugged
     def save_categories
         return has_categories.where(post: self).destroy_all if category_elements.nil? || category_elements.empty? 
 

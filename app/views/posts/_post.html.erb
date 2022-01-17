@@ -18,7 +18,7 @@
     <strong>Content:</strong>
     <%= post.content %>
   </p>
-
+  <% if @post %>
   <p>
     Tags
     <% @post.categories.each do |category|%>
@@ -27,6 +27,7 @@
     </h3>
     <% end %>
   </p>
+  <% end %>
   
 
 
